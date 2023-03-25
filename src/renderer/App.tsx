@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import './index.css';
 import Header from './components/Header';
+import Login from './components/Login';
 
 const useDarkMode = (): any => {
   // create DarkMode Hook
@@ -27,14 +28,12 @@ function Hello() {
   return (
     <div className="min-h-screen bg-white dark:bg-black">
       <Header />
-
-      <div>
-        <h1 className="dark:text-white">Hi Mom</h1>
+      <Login />
         <button type="button" onClick={handleThemeSwitch} className="dark:text-white">
           Dark Mode
         </button>
       </div>
-    </div>
+  
   );
 }
 
