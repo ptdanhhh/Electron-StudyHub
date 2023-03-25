@@ -29,8 +29,8 @@ function Hello() {
       <Header />
 
       <div>
-        <h1>Hi Mom</h1>
-        <button type="button" onClick={handleThemeSwitch}>
+        <h1 className="dark:text-white">Hi Mom</h1>
+        <button type="button" onClick={handleThemeSwitch} className="dark:text-white">
           Dark Mode
         </button>
       </div>
