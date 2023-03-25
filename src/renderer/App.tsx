@@ -1,18 +1,11 @@
 import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import './App.module.css';
-import './index.module.css';
+import './App.css';
+import './index.css';
+import Header from './components/Header';
 
-// function App() {
-//   return (
-//     <div className="h-screen bg-white>
-//     </div>
-//   );
-// }
-
-// export default App;
-
-function Hello() {
+const useDarkMode = (): any => {
+  // create DarkMode Hook
   const [theme, setTheme] = useState('light');
 
   useEffect(() => {
@@ -23,16 +16,24 @@ function Hello() {
     }
   }, [theme]);
 
-  const handleThemeSwitch = () => {
+  const toggleThemeSwitch = () => {
     setTheme(theme === 'dark' ? 'light' : 'dark');
   };
+  return [theme, toggleThemeSwitch];
+}; // end Darkmode hook
 
+function Hello() {
+  const [__, handleThemeSwitch] = useDarkMode();
   return (
-    <div className="bg-white dark:bg-black">
-      <h1>Hi Mom</h1>
-      <button type="button" onClick={handleThemeSwitch}>
-        Dark Mode
-      </button>
+    <div className="min-h-screen bg-white dark:bg-black">
+      <Header />
+
+      <div>
+        <h1>Hi Mom</h1>
+        <button type="button" onClick={handleThemeSwitch}>
+          Dark Mode
+        </button>
+      </div>
     </div>
   );
 }
