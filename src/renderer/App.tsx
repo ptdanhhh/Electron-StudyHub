@@ -1,7 +1,7 @@
 import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import './App.css';
-import './index.css';
+import './App.module.css';
+import './index.module.css';
 
 // function App() {
 //   return (
