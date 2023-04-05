@@ -2,5 +2,8 @@ body {
   position: relative;
   min-height: 100vh;
   font-family: sans-serif;
+  overflow-x: hidden;
+  /* overflow-y: hidden; */
+  
 }
 
