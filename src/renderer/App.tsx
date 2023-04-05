@@ -27,7 +27,7 @@ function Hello() {
   const [__, handleThemeSwitch] = useDarkMode();
   return (
     <div className="min-h-screen bg-white dark:bg-black">
-      <Header />
+      
       <Login />
         <button type="button" onClick={handleThemeSwitch} className="dark:text-white">
           Dark Mode
