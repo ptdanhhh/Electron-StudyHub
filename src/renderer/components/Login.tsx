@@ -26,9 +26,9 @@ function Login({}: Props) {
               <div>
                 <label
                   htmlFor="email"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  className="block mb-2 text-xs text-gray-900 dark:text-white"
                 >
-                  Your email
+                  EMAIL
                 </label>
                 <input
                   type="email"
@@ -41,9 +41,9 @@ function Login({}: Props) {
               <div>
                 <label
                   htmlFor="password"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  className="block mb-2 text-xs font-medium text-gray-900 dark:text-white"
                 >
-                  Password
+                  PASSWORD
                 </label>
                 <input
                   type="password"
@@ -75,22 +75,22 @@ function Login({}: Props) {
                 </div>
                 <a
                   href="#"
-                  className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"
+                  className="text-sm font-medium text-black dark:text-gray-300 hover:underline dark:text-primary-500"
                 >
                   Forgot password?
                 </a>
               </div>
               <button
                 type="submit"
-                className="w-full text-black bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                className="w-full text-white bg-blue-400 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center"
               >
-                Sign in
+                Sign In
               </button>
               <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                 Don’t have an account yet?{' '}
                 <a
                   href="#"
-                  className="font-medium text-primary-600 hover:underline dark:text-primary-500"
+                  className="font-medium hover:underline"
                 >
                   Sign up
                 </a>

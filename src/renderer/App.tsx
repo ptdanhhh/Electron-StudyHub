@@ -4,19 +4,15 @@ import './App.css';
 import './index.css';
 import Header from './components/Header';
 import Login from './components/Login';
-import useDarkMode from './hooks/useDarkMode';
+
 
 function Hello() {
-  const [__, handleThemeSwitch] = useDarkMode();
+ 
   return (
     <div className="min-h-screen bg-white dark:bg-black">
-      
+      <Header />
       <Login />
-        <button type="button" onClick={handleThemeSwitch} className="dark:text-white">
-          Dark Mode
-        </button>
-      </div>
-  
+    </div>
   );
 }
 
