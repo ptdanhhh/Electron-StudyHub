@@ -49,7 +49,6 @@ const installExtensions = async () => {
 };
 
 const createWindow = async () => {
-
   const RESOURCES_PATH = app.isPackaged
     ? path.join(process.resourcesPath, 'assets')
     : path.join(__dirname, '../../assets');
@@ -62,7 +61,7 @@ const createWindow = async () => {
     show: false,
     width: 1024,
     height: 728,
-    minHeight: 650,
+    minHeight: 720,
     minWidth: 900,
     autoHideMenuBar: true,
     frame: true,
