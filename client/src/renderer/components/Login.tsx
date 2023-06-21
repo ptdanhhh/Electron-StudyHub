@@ -1,5 +1,4 @@
-import React from 'react';
-
+import { Link } from 'react-router-dom';
 type Props = {};
 
 function Login({}: Props) {
@@ -66,12 +65,12 @@ function Login({}: Props) {
               </button>
               <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                 Need an account?{' '}
-                <a
-                  href="#"
+                <Link
+                  to="/Register"
                   className="font-medium hover:underline text-blue-500"
                 >
                   Register
-                </a>
+                </Link>
               </p>
             </form>
           </div>
