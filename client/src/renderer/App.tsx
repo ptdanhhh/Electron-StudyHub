@@ -4,6 +4,8 @@ import './index.css';
 import Header from './components/Header';
 import Login from './components/Login';
 import Register from './components/Register';
+import Dashboard from './components/Dashboard';
+import Timer from './components/Timer';
 
 function LoginPage() {
   return (
@@ -22,12 +24,21 @@ function RegisterPage() {
   );
 }
 
+function DashboardPage() {
+  return (
+    <div className="bg-black">
+      <Dashboard />
+    </div>
+  );
+}
+
 export default function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<LoginPage />} />
-        <Route path="Register" element={<RegisterPage />} />
+        {/* <Route path="/" element={<LoginPage />} />
+        <Route path="Register" element={<RegisterPage />} /> */}
+        <Route path="/" element={<Dashboard />} />
       </Routes>
     </Router>
   );
