@@ -36,7 +36,7 @@ export default function App() {
     <Router>
       <Routes>
         {/* <Route path="/" element={<LoginPage />} />
-        <Route path="Register" element={<RegisterPage />} /> */}
+        <Route path="/Register" element={<RegisterPage />} /> */}
         <Route path="/" element={<Dashboard />} />
       </Routes>
     </Router>
