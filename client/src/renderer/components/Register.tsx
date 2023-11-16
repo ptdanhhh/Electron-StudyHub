@@ -5,15 +5,24 @@ function Register({}: Props) {
   return (
     <section className="bg-gray-50 dark:bg-gray-900">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-        <a
-          href="#"
-          className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white"
-        >
-          <img
-            className="w-8 h-8 mr-2"
-            src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg"
-            alt="logo"
-          />
+        <a className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
+          <svg
+            className="pr-1 h-9 w-9 text-black dark:text-white"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="currentColor"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            {' '}
+            <path stroke="none" d="M0 0h24v24H0z" />{' '}
+            <path d="M6 4h11a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-11a1 1 0 0 1 -1 -1v-14a1 1 0 0 1 1 -1m3 0v18" />{' '}
+            <line x1="13" y1="8" x2="15" y2="8" />{' '}
+            <line x1="13" y1="12" x2="15" y2="12" />
+          </svg>
           StudyHub
         </a>
         <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
@@ -54,22 +63,7 @@ function Register({}: Props) {
                   required
                 />
               </div>
-              <div>
-                <label
-                  htmlFor="confirm-password"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Confirm password
-                </label>
-                <input
-                  type="confirm-password"
-                  name="confirm-password"
-                  id="confirm-password"
-                  placeholder=""
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  required
-                />
-              </div>
+
               <div className="flex items-start">
                 <div className="flex items-center h-5">
                   <input
