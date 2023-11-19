@@ -190,7 +190,10 @@ function Sidebar({}: Props) {
                   </a>
                 </li>
                 <li>
-                  <a className="flex items-center p-2 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-neutral-200 dark:hover:bg-slate-800">
+                  <a
+                    href="#"
+                    className="flex items-center p-2 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-neutral-200 dark:hover:bg-slate-800"
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"

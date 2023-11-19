@@ -1,12 +1,15 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from 'fbconfig';
+
 type Props = {};
 
 function Register({}: Props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const navigate = useNavigate();
 
   const signUp = (e: any) => {
     e.preventDefault();
@@ -14,6 +17,7 @@ function Register({}: Props) {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
+        navigate('/login');
         console.log(user);
       })
       .catch((error) => {
