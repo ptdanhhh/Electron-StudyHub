@@ -1,23 +1,26 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import useDarkMode from 'renderer/hooks/useDarkMode';
 import { CgDarkMode } from 'react-icons/cg';
 import { getAuth, signOut } from 'firebase/auth';
 type Props = {};
 
-const logout = (e: any) => {
-  e.preventDefault();
-  const auth = getAuth();
-  signOut(auth)
-    .then(() => {
-      console.log('signed out success');
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-};
-
 function Sidebar({}: Props) {
+  const navigate = useNavigate();
   const [__, handleThemeSwitch] = useDarkMode();
+
+  const logout = (e: any) => {
+    e.preventDefault();
+    const auth = getAuth();
+    signOut(auth)
+      .then(() => {
+        navigate('/login');
+        console.log('signed out success');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <>
       {/* <div className="flex flex-row"> */}
@@ -26,7 +29,7 @@ function Sidebar({}: Props) {
         <aside className="top-0 left-0 z-40 w-56 h-screen transition-transform -translate-x-full sm:translate-x-0">
           <div className="flex flex-col justify-between h-full px-3 py-4 overflow-y-auto bg-zinc-100 dark:bg-slate-900">
             <div>
-              <a className="flex items-center pl-2.5 mb-5 ">
+              <Link to="/" className="flex items-center pl-2.5 mb-5 ">
                 <svg
                   className="h-9 w-9 text-stone-800 dark:text-neutral-200"
                   width="24"
@@ -44,16 +47,17 @@ function Sidebar({}: Props) {
                   <line x1="13" y1="8" x2="15" y2="8" />{' '}
                   <line x1="13" y1="12" x2="15" y2="12" />
                 </svg>
-                <Link to="/">
-                  <span className="px-1 self-center text-xl font-semibold whitespace-nowrap text-stone-800 dark:text-neutral-200">
-                    StudyHub
-                  </span>
-                </Link>
-              </a>
+                <span className="px-1 self-center text-xl font-semibold whitespace-nowrap text-stone-800 dark:text-neutral-200">
+                  StudyHub
+                </span>
+              </Link>
 
               <ul className="space-y-2 font-medium">
                 <li>
-                  <a className="flex items-center p-2 text-slate-500  hover:text-slate-900 dark:text-slate-400 dark:hover:text-neutral-200 dark:hover:bg-slate-800">
+                  <Link
+                    to="/Timer"
+                    className="flex items-center p-2 text-slate-500  hover:text-slate-900 dark:text-slate-400 dark:hover:text-neutral-200 dark:hover:bg-slate-800"
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -68,12 +72,8 @@ function Sidebar({}: Props) {
                         d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
                       />
                     </svg>
-                    <Link to="/Timer">
-                      <span className="flex-1 ml-3 whitespace-nowrap">
-                        Timer
-                      </span>
-                    </Link>
-                  </a>
+                    <span className="flex-1 ml-3 whitespace-nowrap">Timer</span>
+                  </Link>
                 </li>
                 <li>
                   <a
@@ -183,6 +183,7 @@ function Sidebar({}: Props) {
                   <a
                     className="flex items-center p-2 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-neutral-200 dark:hover:bg-slate-800"
                     onClick={handleThemeSwitch}
+                    href="#"
                   >
                     <CgDarkMode size={25} />
                     <span className="flex-1 ml-3 whitespace-nowrap">Theme</span>
@@ -209,7 +210,7 @@ function Sidebar({}: Props) {
                       className="flex-1 ml-3 whitespace-nowrap"
                       onClick={logout}
                     >
-                      <Link to="/login">Log out</Link>
+                      Log out
                     </span>
                   </a>
                 </li>

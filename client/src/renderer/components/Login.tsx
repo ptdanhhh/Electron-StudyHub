@@ -1,28 +1,39 @@
-import { Link, Navigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { useState } from 'react';
+import { useState, FormEvent } from 'react';
 import { auth } from 'fbconfig';
 import { getAuth } from 'firebase/auth';
 
 type Props = {};
 
 function Login({}: Props) {
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const signIn = (e: any) => {
+  const signIn = async (e: FormEvent) => {
     e.preventDefault();
 
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        console.log(user);
-        console.log(user.uid);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    try {
+      setLoading(true);
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = userCredential.user;
+      if (user) {
+        navigate('/');
+      }
+      console.log(user);
+      console.log(user.uid);
+    } catch (e) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -85,12 +96,12 @@ function Login({}: Props) {
                 type="submit"
                 className="w-full text-white bg-sky-500 hover:bg-sky-700 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center"
               >
-                <Link to="/">Sign In</Link>
+                {loading ? 'Loging...' : 'Sign In'}
               </button>
               <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                 Need an account?{' '}
                 <Link
-                  to="/"
+                  to="/register"
                   className="font-medium hover:underline text-blue-500"
                 >
                   Register
