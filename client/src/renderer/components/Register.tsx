@@ -1,7 +1,26 @@
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from 'fbconfig';
 type Props = {};
 
 function Register({}: Props) {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const signUp = (e: any) => {
+    e.preventDefault();
+
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <section className="bg-gray-50 dark:bg-gray-900">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
@@ -11,11 +30,11 @@ function Register({}: Props) {
             width="24"
             height="24"
             viewBox="0 0 24 24"
-            stroke-width="2"
+            strokeWidth="2"
             stroke="currentColor"
             fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           >
             {' '}
             <path stroke="none" d="M0 0h24v24H0z" />{' '}
@@ -30,13 +49,15 @@ function Register({}: Props) {
             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
               Create and account
             </h1>
-            <form className="space-y-4 md:space-y-6" action="#">
+            <form className="space-y-4 md:space-y-6" onSubmit={signUp}>
               <div>
                 <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                   Your email
                 </label>
                 <input
                   type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   required
                 />
@@ -47,12 +68,14 @@ function Register({}: Props) {
                 </label>
                 <input
                   type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   required
                 />
               </div>
 
-              <div className="flex items-start">
+              {/* <div className="flex items-start">
                 <div className="flex items-center h-5">
                   <input
                     type="checkbox"
@@ -63,24 +86,24 @@ function Register({}: Props) {
                 <div className="ml-3 text-sm">
                   <label className="font-light text-gray-500 dark:text-gray-300">
                     I accept the{' '}
-                    <a
-                      className="font-medium text-primary-600 hover:underline dark:text-primary-500"
-                      href="#"
-                    >
+                    <a className="font-medium text-primary-600 hover:underline dark:text-primary-500">
                       Terms and Conditions
                     </a>
                   </label>
                 </div>
-              </div>
+              </div> */}
+
               <button
                 type="submit"
                 className="w-full text-white bg-sky-500 hover:bg-sky-700 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                onClick={}
               >
                 Create an account
               </button>
               <div>
-                <Link to="/" className="text-sm hover:underline text-blue-500 ">
+                <Link
+                  to="/login"
+                  className="text-sm hover:underline text-blue-500 "
+                >
                   Already have an account?
                 </Link>
               </div>

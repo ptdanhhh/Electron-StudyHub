@@ -1,11 +1,11 @@
 import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
+import PrivateRoutes from './components/PrivateRoute/PrivateRoute';
 import './App.css';
 import './index.css';
+import Sidebar from './components/Sidebar/Sidebar';
 import Header from './components/Header';
 import Login from './components/Login';
 import Register from './components/Register';
-// import Timer from './components/Timer/Timer';
-import Sidebar from './components/Sidebar';
 import PomodoroTimer from './components/PomodoroTimer';
 
 function LoginPage() {
@@ -29,9 +29,13 @@ export default function App() {
   return (
     <Router>
       <Routes>
-        {/* <Route path="/" element={<Login />} />
-        <Route path="/Register" element={<RegisterPage />} /> */}
-        <Route path="/" element={<PomodoroTimer />} />
+        <Route element={<PrivateRoutes />}>
+          <Route element={<Sidebar />} path="/" />
+          <Route element={<PomodoroTimer />} path="/timer" />
+        </Route>
+
+        <Route element={<Login />} path="/login" />
+        <Route element={<RegisterPage />} path="/register" />
       </Routes>
     </Router>
   );

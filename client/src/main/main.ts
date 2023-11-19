@@ -66,7 +66,7 @@ const createWindow = async () => {
     autoHideMenuBar: true,
     frame: true,
     // titleBarStyle: 'hidden',
-    icon: getAssetPath('icon.png'),
+    icon: getAssetPath('icon.png'), // change app icon here only for linux and win
     webPreferences: {
       preload: app.isPackaged
         ? path.join(__dirname, 'preload.js')

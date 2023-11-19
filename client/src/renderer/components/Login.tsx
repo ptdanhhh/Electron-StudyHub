@@ -1,9 +1,32 @@
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { useState } from 'react';
+import { auth } from 'fbconfig';
+import { getAuth } from 'firebase/auth';
+
 type Props = {};
 
 function Login({}: Props) {
+  const [error, setError] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const signIn = (e: any) => {
+    e.preventDefault();
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user);
+        console.log(user.uid);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
-    <section className="bg-white dark:bg-gray-900">
+    <section className="bg-slate-200 dark:bg-gray-900">
       <div className="flex flex-col items-center justify-center mx-auto md:h-screen lg:py-0">
         <a className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
           <svg
@@ -11,11 +34,11 @@ function Login({}: Props) {
             width="24"
             height="24"
             viewBox="0 0 24 24"
-            stroke-width="2"
+            strokeWidth="2"
             stroke="currentColor"
             fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           >
             {' '}
             <path stroke="none" d="M0 0h24v24H0z" />{' '}
@@ -25,17 +48,18 @@ function Login({}: Props) {
           </svg>
           StudyHub
         </a>
-        <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+        <div className="w-full bg-slate-100 rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-            <form className="space-y-4 md:space-y-6" action="#">
+            <form className="space-y-4 md:space-y-6" onSubmit={signIn}>
               <div>
                 <label className="block mb-2 text-xs text-gray-900 dark:text-white">
                   EMAIL
                 </label>
                 <input
                   type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  required
                 />
               </div>
               <div>
@@ -44,8 +68,9 @@ function Login({}: Props) {
                 </label>
                 <input
                   type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  required
                 />
               </div>
               {/* <div className="flex items-center justify-end">
@@ -60,12 +85,12 @@ function Login({}: Props) {
                 type="submit"
                 className="w-full text-white bg-sky-500 hover:bg-sky-700 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center"
               >
-                Sign In
+                <Link to="/">Sign In</Link>
               </button>
               <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                 Need an account?{' '}
                 <Link
-                  to="/Register"
+                  to="/"
                   className="font-medium hover:underline text-blue-500"
                 >
                   Register
