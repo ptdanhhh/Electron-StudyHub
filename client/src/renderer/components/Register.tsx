@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, FormEvent } from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from 'fbconfig';
 
@@ -8,8 +8,31 @@ type Props = {};
 function Register({}: Props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
+  // const signUp = async (e: FormEvent) => {
+  //   e.preventDefault();
+
+  //   try {
+  //     setLoading(true);
+  //     const userCredential = await createUserWithEmailAndPassword(
+  //       auth,
+  //       email,
+  //       password
+  //     );
+  //     const user = userCredential.user;
+  //     if (user) {
+  //       navigate('/login');
+  //     }
+  //     console.log(user);
+  //     console.log(user.uid);
+  //   } catch (e) {
+  //     console.log(e);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
   const signUp = (e: any) => {
     e.preventDefault();
@@ -101,7 +124,7 @@ function Register({}: Props) {
                 type="submit"
                 className="w-full text-white bg-sky-500 hover:bg-sky-700 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center"
               >
-                Create an account
+                {loading ? 'Registering...' : 'Create an account'}
               </button>
               <div>
                 <Link
