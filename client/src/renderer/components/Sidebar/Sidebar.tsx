@@ -126,8 +126,8 @@ function Sidebar({}: Props) {
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#"
+                  <Link
+                    to="/todo"
                     className="flex items-center p-2 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-neutral-200 dark:hover:bg-slate-800"
                   >
                     <svg
@@ -148,7 +148,7 @@ function Sidebar({}: Props) {
                     <span className="flex-1 ml-3 whitespace-nowrap">
                       To Do List
                     </span>
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <Link

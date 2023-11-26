@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
 import {
-  MainContainer,
   ChatContainer,
   MessageList,
   Message,
@@ -10,7 +9,7 @@ import {
 } from '@chatscope/chat-ui-kit-react';
 import Sidebar from './Sidebar/Sidebar';
 
-const API_KEY = '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';
+const API_KEY = '';
 
 const systemMessage = {
   role: 'system',
