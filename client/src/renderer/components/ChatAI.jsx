@@ -9,7 +9,7 @@ import {
 } from '@chatscope/chat-ui-kit-react';
 import Sidebar from './Sidebar/Sidebar';
 
-const API_KEY = '';
+const API_KEY = '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';
 
 const systemMessage = {
   role: 'system',
