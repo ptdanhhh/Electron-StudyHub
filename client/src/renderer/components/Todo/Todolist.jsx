@@ -14,12 +14,12 @@ import {
 } from 'firebase/firestore';
 
 const style = {
-  bg: `h-screen w-screen p-4`,
-  container: `bg-slate-100 max-w-[500px] w-full m-auto rounded-md shadow-xl p-4`,
-  heading: `font-bold text-center text-gray-800 p-2`,
+  bg: `h-screen w-screen p-4 bg-zinc-50 dark:bg-slate-800`,
+  container: `bg-white dark:bg-slate-700 max-w-[500px] w-full m-auto rounded-md shadow-xl p-4`,
+  heading: `font-bold text-center text-gray-800 p-2 text-stone-800 dark:text-neutral-200`,
   form: `flex justify-between`,
-  input: `border p-2 w-full `,
-  button: `border p-4 ml-2 bg-purple-500 text-slate-100`,
+  input: `border p-2 w-full rounded-lg block `,
+  button: `border p-4 ml-2 bg-purple-500 text-slate-100 rounded-lg block`,
   count: `text-center p-2`,
 };
 
@@ -69,7 +69,7 @@ function Todolist() {
   return (
     <div className="flex flex-row">
       <Sidebar />
-      <div className="h-screen w-screen p-4 ">
+      <div className="h-screen w-screen p-4 bg-zinc-50 dark:bg-slate-800">
         <div className={style.container}>
           <h3 className={style.heading}>Todo App</h3>
           <form onSubmit={createTodo} className={style.form}>
@@ -78,7 +78,7 @@ function Todolist() {
               onChange={(e) => setInput(e.target.value)}
               className={style.input}
               type="text"
-              placeholder="Add Todo"
+              placeholder="Add task here..."
             />
             <button className={style.button}>
               <AiOutlinePlus size={30} />
