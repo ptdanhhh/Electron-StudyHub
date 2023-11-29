@@ -20,7 +20,7 @@ const style = {
   container: `bg-white dark:bg-slate-700 max-w-[500px] w-full m-auto rounded-md shadow-xl p-4`,
   heading: `font-bold text-xl text-center text-gray-800 p-2 text-stone-800 dark:text-neutral-200`,
   form: `flex justify-between`,
-  input: `border p-2 w-full rounded-lg block dark:bg-slate-800 text-stone-800 dark:text-neutral-200 `,
+  input: `border p-2 w-full rounded-lg block dark:bg-slate-800 text-stone-800 dark:text-neutral-200`,
   button: `border p-4 ml-2 text-white bg-sky-500 hover:bg-sky-700 focus:ring-4 focus:outline-none font-medium text-sm rounded-lg block`,
   count: `text-center p-2 text-stone-800 dark:text-neutral-200`,
 };
