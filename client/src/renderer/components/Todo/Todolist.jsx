@@ -11,21 +11,27 @@ import {
   doc,
   addDoc,
   deleteDoc,
+  where,
 } from 'firebase/firestore';
+import { getAuth } from '@firebase/auth';
 
 const style = {
   bg: `h-screen w-screen p-4 bg-zinc-50 dark:bg-slate-800`,
   container: `bg-white dark:bg-slate-700 max-w-[500px] w-full m-auto rounded-md shadow-xl p-4`,
-  heading: `font-bold text-center text-gray-800 p-2 text-stone-800 dark:text-neutral-200`,
+  heading: `font-bold text-xl text-center text-gray-800 p-2 text-stone-800 dark:text-neutral-200`,
   form: `flex justify-between`,
-  input: `border p-2 w-full rounded-lg block `,
-  button: `border p-4 ml-2 bg-purple-500 text-slate-100 rounded-lg block`,
-  count: `text-center p-2`,
+  input: `border p-2 w-full rounded-lg block dark:bg-slate-800 text-stone-800 dark:text-neutral-200 `,
+  button: `border p-4 ml-2 text-white bg-sky-500 hover:bg-sky-700 focus:ring-4 focus:outline-none font-medium text-sm rounded-lg block`,
+  count: `text-center p-2 text-stone-800 dark:text-neutral-200`,
 };
 
 function Todolist() {
   const [todos, setTodos] = useState([]);
   const [input, setInput] = useState('');
+
+  const auth = getAuth();
+  const user = auth.currentUser;
+  const currentUseremail = user.email;
 
   // Create todo
   const createTodo = async (e) => {
@@ -37,13 +43,15 @@ function Todolist() {
     await addDoc(collection(db, 'todos'), {
       text: input,
       completed: false,
+      user: currentUseremail,
     });
     setInput('');
   };
 
   // Read todo from firebase
   useEffect(() => {
-    const q = query(collection(db, 'todos'));
+    const todoRef = collection(db, 'todos');
+    const q = query(todoRef, where('user', '==', currentUseremail));
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       let todosArr = [];
       querySnapshot.forEach((doc) => {
@@ -71,7 +79,7 @@ function Todolist() {
       <Sidebar />
       <div className="h-screen w-screen p-4 bg-zinc-50 dark:bg-slate-800">
         <div className={style.container}>
-          <h3 className={style.heading}>Todo App</h3>
+          <h3 className={style.heading}>To Do List</h3>
           <form onSubmit={createTodo} className={style.form}>
             <input
               value={input}

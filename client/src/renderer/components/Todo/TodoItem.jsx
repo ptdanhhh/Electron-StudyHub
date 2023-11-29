@@ -1,8 +1,8 @@
 import { FaRegTrashAlt } from 'react-icons/fa';
 
 const style = {
-  li: `flex justify-between dark:bg-slate-600 bg-slate-200 p-4 my-2 capitalize rounded-lg block`,
-  liComplete: `flex justify-between bg-slate-400 p-4 my-2 capitalize`,
+  li: `flex justify-between dark:bg-slate-600 bg-slate-200 text-stone-800 dark:text-neutral-200 p-4 my-2 capitalize rounded-lg block`,
+  liComplete: `flex justify-between text-stone-800 dark:text-neutral-200 bg-slate-400 p-4 my-2 capitalize`,
   row: `flex`,
   text: `ml-2 cursor-pointer`,
   textComplete: `ml-2 cursor-pointer line-through`,

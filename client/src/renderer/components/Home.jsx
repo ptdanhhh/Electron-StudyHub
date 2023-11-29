@@ -1,6 +1,16 @@
 import Sidebar from './Sidebar/Sidebar';
 
+import { getAuth } from '@firebase/auth';
+
 function Home() {
+  const auth = getAuth();
+  const user = auth.currentUser;
+
+  const email = user.email;
+  const uid = user.uid;
+  console.log(email);
+  console.log(uid);
+
   return (
     <div className="flex flex-row">
       <Sidebar />

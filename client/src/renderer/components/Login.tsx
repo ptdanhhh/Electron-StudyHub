@@ -1,8 +1,7 @@
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useState, FormEvent } from 'react';
 import { auth } from 'fbconfig';
-import { getAuth } from 'firebase/auth';
 
 type Props = {};
 
@@ -28,7 +27,6 @@ function Login({}: Props) {
         navigate('/');
       }
       console.log(user);
-      console.log(user.uid);
     } catch (e) {
       console.log(error);
     } finally {
@@ -86,14 +84,6 @@ function Login({}: Props) {
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 />
               </div>
-              {/* <div className="flex items-center justify-end">
-                <a
-                  href="#"
-                  className="text-sm font-medium text-blue-500 hover:underline"
-                >
-                  Forgot password?
-                </a>
-              </div> */}
               <button
                 type="submit"
                 className="w-full text-white bg-sky-500 hover:bg-sky-700 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center"
