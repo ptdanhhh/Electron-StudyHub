@@ -9,6 +9,7 @@ import Register from './components/Register';
 import PomodoroTimer from './components/PomodoroTimer';
 import ChatAI from './components/ChatAI';
 import Todolist from './components/Todo/Todolist';
+import Notes from './components/Note/Notes';
 
 function LoginPage() {
   return (
@@ -37,6 +38,7 @@ export default function App() {
           <Route element={<PomodoroTimer />} path="/timer" />
           <Route element={<ChatAI />} path="/chatai" />
           <Route element={<Todolist />} path="/todo" />
+          <Route element={<Notes />} path="/note" />
         </Route>
 
         <Route element={<LoginPage />} path="/login" />
