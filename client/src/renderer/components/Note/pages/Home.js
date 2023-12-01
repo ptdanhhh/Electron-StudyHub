@@ -24,11 +24,11 @@ const Home = () => {
   return (
     <NoteProvider>
       {loading ? (
-        <div className="fixed w-full h-full top-0 left-0 flex justify-center items-center">
-          <div className="w-8 h-8 rounded-full border-4 border-slate-100 border-solid border-t-slate-300  animate-spin"></div>
+        <div className=" w-full h-full top-0 left-0 flex justify-center items-center">
+          <div className="w-8 h-8 rounded-full border-4 border-slate-100 border-solid border-t-slate-300"></div>
         </div>
       ) : (
-        <div className={modal ? 'fixed inset-0 overflow-hidden' : null}>
+        <div className={modal ? ' inset-0 overflow-hidden' : null}>
           <NotesControl />
           <Modal />
         </div>

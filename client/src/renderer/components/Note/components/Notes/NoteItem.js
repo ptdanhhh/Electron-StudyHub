@@ -57,29 +57,28 @@ const NoteItem = (props) => {
     return `${hour}:${minutes} ${numberDay} ${monthNames[monthIndex]}`;
   };
   return (
-    <div
-      className={` group p-4 h-40 md:h-52 ${color} rounded-md shadow-md animate-newNote`}
-    >
-      <div className="relative flex flex-col h-full">
-        <div className="flex flex-col h-full overflow-hidden">
+    <div className={`p-5 h-40 md:h-52 ${color} rounded-md shadow-md `}>
+      <div className=" flex flex-col h-full">
+        <div className="flex flex-col h-full ">
           <h4 className="text-slate-600 line-clamp-1 text-lg font-bold">
             {props.title}
           </h4>
           <p className="flex-grow line-clamp-3 md:line-clamp-5  text-slate-500">
             {props.text}
           </p>
-          <span className=" text-slate-400">
+
+          <div className="  text-slate-400">
             {timeHandler(props.date.seconds)}
-          </span>
-        </div>
-        <div
-          className="group-edit absolute bottom-0 right-0 bg-slate-600 p-2 rounded-full cursor-pointer animate-editNoteEnd group-hover:animate-editNote "
-          onClick={() => {
-            showModal('edit-note-content');
-            setId(props.id);
-          }}
-        >
-          <FaPen className="text-white transition group-edit-hover:text-orange-300" />
+          </div>
+          <div
+            className="bg-slate-600 p-1.5 rounded-full cursor-pointer"
+            onClick={() => {
+              showModal('edit-note-content');
+              setId(props.id);
+            }}
+          >
+            <FaPen className="text-white" />
+          </div>
         </div>
       </div>
     </div>

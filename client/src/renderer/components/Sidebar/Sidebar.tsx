@@ -75,9 +75,9 @@ function Sidebar({}: Props) {
                     <span className="flex-1 ml-3 whitespace-nowrap">Timer</span>
                   </Link>
                 </li>
-                <li>
-                  <a
-                    href="#"
+                {/* <li>
+                  <Link
+                    to="#"
                     className="flex items-center p-2 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-neutral-200 dark:hover:bg-slate-800"
                   >
                     <svg
@@ -98,8 +98,8 @@ function Sidebar({}: Props) {
                     <span className="flex-1 ml-3 whitespace-nowrap">
                       Flashcards
                     </span>
-                  </a>
-                </li>
+                  </Link>
+                </li> */}
                 <li>
                   <Link
                     to="/note"
